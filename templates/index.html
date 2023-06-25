@@ -1,0 +1,18 @@
+<html>
+<body>
+    <h1>Black-Scholes Model</h1>
+    <form action="/calculate" method="post">
+        <label for="S">Current Price of Underlying Asset:</label>
+        <input type="number" step="any" name="S" required><br>
+        <label for="X">Strike Price:</label>
+        <input type="number" step="any" name="X" required><br>
+        <label for="r">Risk-Free Interest Rate:</label>
+        <input type="number" step="any" name="r" required><br>
+        <label for="sigma">Volatility:</label>
+        <input type="number" step="any" name="sigma" required><br>
+        <label for="T">Time to Expiration (in years):</label>
+        <input type="number" step="any" name="T" required><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
