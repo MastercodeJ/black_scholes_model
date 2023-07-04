@@ -41,10 +41,5 @@ def calculate_option_price(request: Request, S: float = Form(...), X: float = Fo
 
 @app.post("/calculate/put")
 def calculate_option_price(request: Request, S: float = Form(...), X: float = Form(...), r: float = Form(...), sigma: float = Form(...), T: float = Form(...)):
-    # d1 = (math.log(S / X) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T))
-    # d2 = d1 - sigma * math.sqrt(T)
-    
-    # call_price = S * norm.cdf(d1) - X * math.exp(-r * T) * norm.cdf(d2)
     put_price = black_scholes.black_scholes_put(S, X, r, T,sigma)
-
     return templates.TemplateResponse("put_result.html", {"request": request, "call_price": put_price})
