@@ -1,0 +1,47 @@
+<html>
+<head>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Black-Scholes Model Call</h1>
+        <form action="/calculate/call" method="post">
+            <label for="S">Current Price of Underlying Asset:</label>
+            <input type="number" step="any" name="S" required><br>
+            <label for="X">Strike Price:</label>
+            <input type="number" step="any" name="X" required> <br>
+            <label for="r">Risk-Free Interest Rate:</label>
+           <input type="number" step="any" name="r" required><br>
+            <label for="sigma">Volatility:</label>
+            <input type="number" stepany= "any" name="sigma" required><br>
+           <label for="T">Time to Expiration (in years from 1 to 365):</label>
+            <input type="number" step="any" name="T" required><br>
+            <input type="submit" value="Calculate">
+        </form>
+        
+        <h1>Black-Scholes Model Put</h1>
+        <form action="/calculate/put" method="post">
+            <label for="S">Current Price of Underlying Asset:</label>
+            <input type="number" step="any" name="S" required><br>
+            <label for="X">Strike Price:</label>
+            <input type="number" step="any" name="X" required><br>
+            <label for="r">Risk-Free Interest Rate:</label>
+            <input type="number" step="any" name="r" value="0.05" required><br>
+            <label for="sigma">Volatility:</label>
+            <input type="number" step="any" name="sigma" required><br>
+            <label for="T">Time to Expiration (in years from 1 to 365):</label>
+            <input type="number" step="any" name="T" required><br>
+            <input type="submit" value="Calculate">
+        </form>
+    </div>
+</body>
+</html>
