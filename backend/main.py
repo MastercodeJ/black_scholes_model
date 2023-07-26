@@ -25,21 +25,17 @@ app.add_middleware(
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
-def read_root():
-    return {'Ping': "Pong"}
-
-@app.get("/123")
 def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/calculate/call")
-def calculate_option_price(request: Request, S: float = Form(...), X: float = Form(...), r: float = Form(...), sigma: float = Form(...), T: float = Form(...)):
-    call_price = black_scholes.black_scholes_call(S, X, r, T,sigma)
-    print(call_price)
-    return templates.TemplateResponse("call_result.html", {"request": request, "call_price": call_price})
+def calculate_option_price(request: Request, X: float = Form(...), T: float = Form(...),  ticker: str = Form(...)):
+    print(X, T, ticker, 'sdfsdf')
+    call_price, price, Strike_price, risk_free_rate, time_to_maturity, sigma,  = black_scholes.black_scholes_call( X, T, ticker)
+    return templates.TemplateResponse("call_result.html", {"request": request, "call_price": call_price, "price": price, "Strike_price":Strike_price, "risk_free_rate": round(risk_free_rate,2)*100, "time_to_maturity": time_to_maturity, "sigma": round(sigma, 2)*100, 'ticker': ticker})
 
 
 @app.post("/calculate/put")
-def calculate_option_price(request: Request, S: float = Form(...), X: float = Form(...), r: float = Form(...), sigma: float = Form(...), T: float = Form(...)):
-    put_price = black_scholes.black_scholes_put(S, X, r, T,sigma)
-    return templates.TemplateResponse("put_result.html", {"request": request, "call_price": put_price})
+def calculate_option_price(request: Request, X: float = Form(...),  T: float = Form(...), ticker: str = Form(...)):
+    put_price, price, Strike_price, risk_free_rate, time_to_maturity, sigma = black_scholes.black_scholes_put( X, T, ticker)
+    return templates.TemplateResponse("put_result.html", {"request": request, "call_price": put_price, "price": price, "Strike_price":Strike_price, "risk_free_rate": round(risk_free_rate,2)*100, "time_to_maturity": time_to_maturity, "sigma": round(sigma, 2)*100, 'ticker': ticker})

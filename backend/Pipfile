@@ -13,6 +13,8 @@ pydantic = "*"
 motor = "*"
 jinja2 = "*"
 sqlalchemy = "*"
+pandas = "*"
+yfinance = "*"
 
 [dev-packages]
 

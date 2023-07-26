@@ -1,6 +1,23 @@
 <html>
+<head>
+    <style>
+        body {
+            justify-content: center;
+            align-items:center;
+            height: 100vh;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
 <body>
-    <h1>Black-Scholes Model Result</h1>
+    <h1>Black-Scholes Model Call Option Result</h1>
     <p>Call Option Price: {{ call_price }}</p>
+    <p>Spot price of {{ticker}}: {{ price }}</p>
+    <p>Strike price: {{ Strike_price }}</p>
+    <p>Risk-free interest rate: {{ risk_free_rate }}%</p>
+    <p>time to maturity: {{ time_to_maturity }} days</p>
+    <p>volatility of the asset: {{ sigma }}%</p>
 </body>
 </html>
